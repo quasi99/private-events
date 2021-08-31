@@ -1,0 +1,2 @@
+class AttendeesEvent < ApplicationRecord
+end
