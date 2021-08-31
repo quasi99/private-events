@@ -1,0 +1,361 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$navbar-breakpoint: 0;
+@import "bulma";
+
+.notification:not(:last-child) {
+	margin-bottom: 0px;
+}
+
+body,html {
+	background: #f8f8f8;
+}
+
+html {
+	background-image: 
+		image-url("main-hero-s.jpg"),
+		image-url("signup2-alt.jpg"),
+		image-url("signin-bg.jpg");
+	background-size: 0 0;
+}
+
+.jcc {
+	justify-content: center;
+}
+
+.hint {
+	color: hsl(0, 0%, 48%);
+}
+
+.error {
+	color: hsl(348, 100%, 61%);
+}
+
+.mw-50 {
+	max-width: 56% !important;
+}
+
+.has-borger-bottom {
+	border-bottom: 1px solid rgba(46, 62, 72, .12);
+}
+.has-border-top-bottom {
+	border-top: 1px solid rgba(46, 62, 72, .12);
+	border-bottom: 1px solid rgba(46, 62, 72, .12);
+}
+
+.remove-links-color a {
+	color: inherit
+}
+
+.bg-none-btn {
+	display: none;
+}
+
+nav {
+	border-bottom: 1px solid rgba(46, 62, 72, .12)
+}
+
+.navbar-profile-img {
+	width: 30px;
+	height: 30px;
+}
+
+// todo: write media queries for this, look at eventbrite
+
+#main-hero {
+	background-image: image-url("main-hero-s.jpg"), linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2));
+	background-blend-mode: overlay;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#main-hero .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+// todo: center main hero text vertically. Flex the container?
+
+#main-hero-text {
+	color: #fff;
+	font-size: 3.5rem !important;
+	opacity: .95;
+}
+
+// index event cards
+
+.card {
+	border-radius: 10px !important;
+	transition: all 150ms ease-in;
+	height: 100%;
+}
+
+.card:hover {
+	box-shadow: 0 0.5em 1.5em 0.300em rgba(10, 10, 10, 0.1), 0 0px 1.5em 5px rgba(10, 10, 10, 0.02);
+}
+
+#events-container .column {
+	margin-bottom: .75rem;
+}
+
+// height for events card content
+
+#events-container .column .card-content {
+	min-height: 150px;
+}
+
+#events-container .column .card-content .content p {
+	margin-bottom: 5px;
+}
+
+.event-date {
+	font-size: 13.5px;
+}
+
+// Show
+
+.show-header {
+	background-color: white;
+	padding: 20px 20px !important;
+	border-bottom: 1px solid rgba(46, 62, 72, .12);
+}
+
+.show-header .media {
+	max-width: fit-content;
+	margin: 0 !important;
+}
+
+
+.event-descripition, attendees {
+	max-width: 70%;
+}
+
+.event-descripition p {
+	white-space: pre-line !important;
+	font-size: 18px;
+}
+
+.attend-btn {
+	width: 100%;
+}
+
+.attendees h3 {
+	font-size: 1.75rem;
+}
+
+// todo: this needs media queries
+// .attendees .columns {	
+// }
+
+.attendees .card-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+}
+
+// events form
+
+form abbr[title] {
+	border-bottom: none !important;
+	text-decoration: none !important;
+	color: hsl(348, 100%, 61%) !important;
+}
+
+// file upload btn
+
+.file-style {
+	display: block;
+	width: 200px;
+	outline: none !important;
+}
+
+// sign up form
+
+#signup-form-bg {
+	background-image: image-url("signup2-alt.jpg"), linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
+	background-blend-mode: overlay;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#signup-bg-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#signup-bg-content .button, #signin-bg-content .button {
+	opacity: 0.75;
+	padding-left: 1.5em !important;
+	padding-right: 1.5em !important;
+}
+
+#signup-bg-button-text {
+	color: #fff !important;
+	font-weight: 500 !important;
+}
+
+#signup-form-bg h2 {
+	color: #fff;
+	opacity: .95;
+}
+
+// signin form
+
+#signin-form-bg {
+	background-image: image-url("signin-bg.jpg"), linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
+	background-blend-mode: overlay;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#signin-bg-content h2 {
+	color: #fff;
+	opacity: .95;
+	margin: 5px !important;
+}
+
+#signin-bg-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#signin-bg-content {
+	color: #fff;
+	opacity: .85;
+}
+
+// Users edit
+
+.image-hint {
+	display: inline-block;
+}
+
+// User show
+
+.icon-text {
+	display: flex;
+}
+
+.la-calendar, .la-users {
+	font-size: 1.2rem;
+	font-weight: bold !important;
+}
+
+.profile-image {
+	height: 300px;
+	width: 300px;
+}
+
+.user-show-event .image {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.user-show-event .image {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.user-show-event .media-content p:not(:last-child) {
+	margin-bottom: 6px;
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+	.attendees .column {
+		width: 30% !important;
+	}
+}
+
+@media (max-width: 1024px) {
+	.hero .is-halfheight, #main-hero {
+		min-height: 30vh !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.reverse-columns {
+		flex-direction: column-reverse;
+		display: flex;
+	}
+
+	.profile-image {
+		height: 256px;
+		width: 256px;
+	}
+
+	.hero .is-halfheight, #main-hero {
+		min-height: 25vh !important;
+	}
+
+	#main-hero-text {
+		font-size: 3em !important;
+	}
+}
+
+@media (max-width: 428px) {
+	.profile-image {
+		height: 128px;
+		width: 128px;
+	}
+
+	.card-column {
+		width: 100% !important;
+	}
+
+	#main-hero-text {
+		font-size: 2.5rem !important;
+	}
+}
+
+@media (max-width: 960px) {
+	#signup-form-bg, #signin-form-bg {
+		display: none;
+	}
+
+	.bg-none-btn {
+		display: block !important;
+	}
+
+	.mw-50 {
+		max-width: 100% !important;
+	}
+}
+
+@media (max-width: 328px) {
+	.attendees .column, #attendee-card {
+		width: inherit !important;
+	}
+}
