@@ -1,0 +1,101 @@
+<section class=" show-header section is-medium">
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8">
+                <h1 class="title"> <%= @event.title %> </h1>
+                <div class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <% if @event.creator.image.attached? %>
+                                <%= image_tag @event.creator.image, class:"is-rounded" %>
+                            <% else %>
+                                <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png">
+                            <% end %>
+
+                            
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content remove-links-color">
+
+                            <%= link_to user_path(@event.creator.id)  do %>
+                                <p> Hosted by <br> <span class="has-text-weight-semibold"> <%= @event.creator.name %>  </span> </p>
+                            <% end %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</section>
+
+<section class="section show-main">
+    <div class="container">
+        <div class="columns is-centered reverse-columns ">
+
+            <div class="column is-two-thirds">
+                <div class="content event-description">
+                    <h2 class="subtitle"> About this event </h2>
+                    <p> <%= @event.description %> </p>
+                </div>
+
+                <div class="block attendees">
+                    <h3 class="title"> Attendees (<%= @event.attendees.count %>) </h3>
+                    <div class="columns is-multiline is-variable is-mobile">
+                        <% @event.attendees.each do |attendee| %>
+                            <div id="attendee-card" class="column is-one-quarter-fullhd is-one-quarter-widescreen is-one-third-desktop is-two-fifths-tablet is-half-mobile ">
+                                <%= link_to user_path(attendee.id) do %>
+                                    <div class="card ">
+                                        <div class="card-image">
+                                            <figure class="image is-64x64">
+                                                <% if attendee.image.attached? %>
+                                                    <%= image_tag attendee.image, class:"is-rounded" %>
+                                                <% else %>
+                                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png">
+                                                <% end %>
+                                            </figure>
+                                        </div>
+                                        <div class="card-content">
+                                            <p class="has-text-weight-semibold has-text-centered"> <%= attendee.name %> </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+
+                <% if @event.date.past? %>
+                    <button class="button is-danger is-medium mb-4 attend-btn" disabled>
+                        Event Has Passed!
+                    </button>
+                <% else %>
+                    <% if  user_signed_in? && AttendeesEvent.exists?(attendee_id: current_user.id, event_id: @event.id) %>
+                        <%= link_to 'Unattend', unattend_event_path(@event.id), 
+                                                class: "attend-btn button is-danger is-light mb-4 is-medium" %>
+                    <% else %>
+                        <%= link_to 'Attend', attend_event_path(@event.id), 
+                                            class: "attend-btn button is-danger mb-4 is-medium" %>
+                    <% end %>
+                <% end %>
+
+                <div class="box">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="https://img.icons8.com/material-outlined/50/000000/clock--v1.png"/>
+                        </div>
+                        <div class="media-content">
+                            <p> <%=@event.date.strftime("%A, %B %d, %Y ")%> <br> <%= @event.time.strftime("%I:%M %p") %> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
